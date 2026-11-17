@@ -1,0 +1,1 @@
+{'measurements': 'D:\\Semester - 5\\Fundamentals of Computer Graphics\\FCG PROJECT\\results\\colour_measurements.csv', 'figures': 'D:\\Semester - 5\\Fundamentals of Computer Graphics\\FCG PROJECT\\results\\figures', 'donation': 'D:\\Semester - 5\\Fundamentals of Computer Graphics\\FCG PROJECT\\results\\donation_simulation.csv'}

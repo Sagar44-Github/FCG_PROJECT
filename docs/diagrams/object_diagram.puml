@@ -1,0 +1,14 @@
+@startuml
+object "CONFIG: initial project parameters" as cfg { colours=G,Y,O,R\nilluminations=L1,L2,L3\nseed=20261115 }
+object "D65Data: CIE 1nm" as d65 { range=300..830 nm\nsource=CIE dataset }
+object "ObserverData: CIE 1931 2°" as cmf { range=360..830 nm\nsource=CIE dataset }
+object "VirtualPrint: transfer v1" as print { density=1.06\nsubstrate=0.96 }
+object "Comparison: R x L2" as comp { delta_e00=calculated\nsource=simulated spectra }
+object "SQLite: comparison record" as db { id=UUID\nresult=JSON }
+cfg --> d65
+cfg --> print
+d65 --> comp
+cmf --> comp
+print --> comp
+comp --> db
+@enduml

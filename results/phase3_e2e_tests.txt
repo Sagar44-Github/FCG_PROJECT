@@ -1,0 +1,10 @@
+
+Running 3 tests using 1 worker
+
+(node:17384) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 e2e\research-app.spec.ts:7:1 › all six sections use the live research API and export real evidence (31.2s)
+  ok 2 e2e\research-app.spec.ts:92:1 › uses a Blender PNG when WebGL is unavailable (3.2s)
+  ok 3 e2e\research-app.spec.ts:109:1 › submits and completes an actual twelve-condition Blender render job (1.5m)
+
+  3 passed (2.1m)

@@ -1,0 +1,33 @@
+@startuml
+actor Researcher
+participant "React dashboard" as UI
+participant "FastAPI v1" as API
+participant "Color engine" as Color
+participant "Inventory simulation" as Sim
+database "SQLite" as DB
+participant "BackgroundTasks" as BG
+participant "Blender process" as Blender
+alt Comparison and donation-simulation request
+  Researcher -> UI: choose a configured comparison or simulation
+  UI -> API: POST /colour-comparisons or /donation-simulations
+  API -> Color: compare_colour() × configured actions
+  Color --> API: XYZ / Lab / ΔE00 / chromaticity
+  API -> Sim: seeded Monte Carlo request
+  Sim --> API: confusion / inventory outcomes + intervals
+  API -> DB: persist computed result and config digest
+  API --> UI: resource id + computed result
+else Isolated Blender render-job request
+  Researcher -> UI: start full render batch
+  UI -> API: POST /render-jobs
+  API -> DB: persist queued status
+  API -> BG: fixed command + server UUID output directory
+  BG -> Blender: Blender executable + fixed argument array
+  Blender --> BG: 12 PNG renders + saved .blend
+  BG -> BG: generate contact sheet + run metadata
+  BG --> API: exit status + render inventory
+  API -> DB: persist completed / failed status
+  UI -> API: GET /render-jobs/{id} and /renders
+  API --> UI: status + allow-listed preview URLs
+end
+UI --> Researcher: results, previews, CSV / ZIP downloads
+@enduml

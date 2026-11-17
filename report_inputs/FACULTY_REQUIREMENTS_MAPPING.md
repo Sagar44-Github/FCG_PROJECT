@@ -1,0 +1,25 @@
+# Faculty software-engineering requirements mapping
+
+This mapping uses the teacher's software-engineering checklist supplied in the user's message and the now-included assignment PDF. The checklist text is transcribed in the handoff; the assignment itself is `reference_materials/assignment/Copy_of_OE-CCA_30_d.pdf`. The two ToC images are from an unrelated research topic; see `TOC_STRUCTURE_MAPPING.md` for the generic-structure mapping and excluded topic-specific material.
+
+| Requirement | Implemented evidence |
+|---|---|
+| User mode and kernel mode | `docs/architecture.md` explains Python, Blender, FastAPI, SQLite and the browser execute as user-space processes; no custom kernel component is required. |
+| Object-oriented design | FastAPI/Pydantic request and response types and SQLite repository boundary; numerical methods remain focused functional modules. See `backend/` and `docs/diagrams/class_diagram.puml`. |
+| UML object diagram | `docs/diagrams/object_diagram.puml` and rendered image show a configured R×L2 runtime comparison and persisted record. |
+| UML component diagram | `docs/diagrams/component_diagram.puml`; React client, API, scientific engine, Blender, SQLite, datasets and evidence files. |
+| Query parameters | Render/analysis job collections accept `limit`, `offset`, `status`; comparison history accepts `limit`, `offset`, `illumination_id`; donation history accepts `limit`, `offset`, `illumination_id`, `recognition`. Values are validated and bounded. See `docs/api_reference.md` and `backend/main.py`. |
+| API development | Versioned REST resources under `/api/v1`, implemented in FastAPI with Pydantic validation, exception handling, persistence services, and generated Swagger/OpenAPI at `/docs`. See `backend/main.py`, `backend/`, and `docs/api_reference.md`. |
+| API integration | React and fallback Streamlit call the same API; Playwright exercises real backend requests. See `docs/frontend_architecture.md`. |
+| Unit/integration tests | `tests/test_colour_science.py` checks sRGB/XYZ/Lab, chromaticity, Bradford adaptation and published CIEDE2000 cases; `test_spectral_and_print.py` checks CIE dataset checksums, D65, LED separation/targets and print bounds; `test_simulation.py` checks monotonic bounded errors, probability rows, seed repeatability and capacity effects; `test_api.py` covers health, validation, persistence, pagination, path allow-lists, exports and jobs. Frontend Vitest and Playwright evidence is in `results/phase4_*`. |
+| Pagination | SQLite collection routes return total/limit/offset/items and apply bounded query parameters. |
+| Routing | RESTful, resource-oriented FastAPI paths are versioned under `/api/v1` so clients can distinguish operations and evolve the contract predictably; React navigation selects the six sections and calls their API resources. Route-to-API mapping is in `docs/frontend_architecture.md`. |
+| Backend robustness | Pydantic bounds, parameterized SQL, server UUID output dirs, subprocess argument arrays/timeouts, allow-listed artifact routing, logging and persisted job states. |
+| Cloud deployment | Proposed deployment is containerized FastAPI plus Nginx-served React, with `/api/v1/health`, persistent SQLite/results/render volumes and environment-based configuration; build the image, deploy to a VM/container host, attach persistent storage and TLS/reverse proxy, then verify health and backups. Dockerfile/Compose/Nginx preparation exists, but Docker execution and cloud deployment remain explicitly unverified (`docs/deployment_status.md`). |
+| Sandbox testing | Request validation, file/artifact allow-lists, bounded jobs, server-generated output paths, no arbitrary uploads/shell command/path, isolated render output and an unprivileged container configuration. Unit/API security-boundary tests live in `tests/test_api.py`; they verify user requests cannot choose arbitrary paths. |
+| System-level testing | Phase 4 Playwright/live-app runs exercise real API connectivity, six routes/pages, rendering, comparisons, simulation, exports, responsiveness, and the WebGL fallback; see `results/phase4_e2e_tests.txt`. |
+| Acceptance testing | The retained end-to-end workflow evidence verifies defined software acceptance flows; there are no human-participant acceptance results. |
+
+## Original 30-mark assignment rubric
+
+Page 1 of `Original_Assignment.pdf` scores five criteria at six marks each. The current project provides Blender render/scene evidence, a literature comparison with source-integrity limitations, calculated colour differences, model-based trigger and donation simulations, and explicit sustainability assumptions. It does not supply participant-study data, and its carbon factors are illustrative rather than sourced. Thus, it supports computational evaluability and reproducibility but cannot claim to satisfy a physical/user-study validation option or a sourced carbon audit. The assignment's “use only Blender” phrase also conflicts with the separately specified full-stack application. `IMPLEMENTATION_SCOPE_NOTE.md` records this openly.

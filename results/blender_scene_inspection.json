@@ -1,0 +1,54 @@
+{
+  "blender_version": "5.2.3 LTS",
+  "project_file": "D:\\Semester - 5\\Fundamentals of Computer Graphics\\FCG PROJECT\\blender\\q3_project.blend",
+  "engine": "CYCLES",
+  "view_transform": "Standard",
+  "look": "None",
+  "exposure": 0.0,
+  "gamma": 1.0,
+  "resolution_px": [
+    960,
+    640
+  ],
+  "resolution_percentage": 100,
+  "cycles_samples": 8,
+  "denoising": true,
+  "label_material": "Shelf label | scenario-controlled",
+  "label_hex": "#2E9E4F",
+  "label_diffuse_linear_rgba": [
+    0.027320891618728638,
+    0.34191441535949707,
+    0.07818742096424103,
+    1.0
+  ],
+  "label_diffuse_roughness": 0.36000001430511475,
+  "label_shader_nodes": [
+    "Controlled Diffuse Surface",
+    "Material Output"
+  ],
+  "label_shader_links": [
+    {
+      "from_node": "Controlled Diffuse Surface",
+      "from_socket": "BSDF",
+      "to_node": "Material Output",
+      "to_socket": "Surface"
+    }
+  ],
+  "light_name": "Scenario illuminant panel",
+  "light_energy": 200.0,
+  "light_shader_nodes": [
+    "Approximate LED chromaticity only",
+    "RGB area-light emission",
+    "Light Output"
+  ],
+  "light_shader_links": [
+    {
+      "from_node": "RGB area-light emission",
+      "from_socket": "Emission",
+      "to_node": "Light Output",
+      "to_socket": "Surface"
+    }
+  ],
+  "scene_spectral_note": "Blender Cycles RGB render for visual comparison only. D65 and LED colorimetry is calculated in Python from spectra; no 6500 K blackbody is used as D65.",
+  "scene_illuminant_note": "CIE D65 visualization uses neutral RGB white. Its 1 nm SPD is evaluated outside Blender; this is not a blackbody substitute."
+}

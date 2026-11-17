@@ -1,0 +1,33 @@
+@startuml
+skinparam componentStyle rectangle
+actor Researcher
+component "React + TypeScript dashboard\nAPI client · R3F visualization" as ui
+component "Streamlit fallback\nAPI client" as fallback
+component "FastAPI / OpenAPI\nrequest validation · routing · job status" as api
+component "SQLite repository\ncomparisons · simulation · analysis/render jobs" as db
+component "Spectral and colour engine\nCIE data · virtual print · CIEDE2000" as color
+component "Observer + inventory model\nconfusion · capacity Monte Carlo" as sim
+component "Evidence pipeline\nCSV · figures · metadata" as pipeline
+component "Blender Cycles RGB\nfixed background batch" as blender
+database "Local CIE reference datasets" as data
+folder "results/\nCSV · figures · tables" as results
+folder "renders/\nPNG · contact sheet · .blend" as renders
+file "config.json\nread-only settings" as config
+Researcher --> ui : browser :5173 / :3000
+Researcher --> fallback : optional browser :8501
+Researcher --> api : Swagger / HTTP :8000
+ui --> api : REST / JSON
+fallback --> api : REST / JSON
+api --> db : parameterized SQLite
+api --> pipeline : start analysis job
+api --> color : compute selected comparison
+api --> sim : start seeded simulation
+pipeline --> color
+pipeline --> sim
+color --> data : official CIE data
+pipeline --> results : generated evidence
+pipeline --> config : reads configuration
+api --> config : read-only snapshot + hash
+api --> blender : fixed argv + timeout
+blender --> renders : twelve PNG + saved scene
+@enduml

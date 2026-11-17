@@ -1,0 +1,53 @@
+{
+  "project": {
+    "title": "Software-Based Spectral Evaluation of Expiry-Warning Shelf Colours",
+    "version": "0.1.0",
+    "random_seed": 20261115,
+    "wavelength_nm": {"start": 380, "end": 780, "step": 1},
+    "observer": "CIE 1931 2 degree"
+  },
+  "colours": {
+    "G": {"name": "Fresh", "action": "fresh", "hex": "#2E9E4F"},
+    "Y": {"name": "Watch", "action": "watch", "hex": "#F5B700"},
+    "O": {"name": "Discount now", "action": "discount", "hex": "#F07C1E"},
+    "R": {"name": "Donate now", "action": "donate", "hex": "#D62828"}
+  },
+  "illuminations": {
+    "L1": {"name": "D65 daylight", "kind": "cie_d65", "cct_kelvin": 6504, "is_standard": true},
+    "L2": {"name": "Neutral store LED approximation", "kind": "phosphor_led_approximation", "cct_kelvin": 4000, "is_standard": false},
+    "L3": {"name": "Warm store LED approximation", "kind": "phosphor_led_approximation", "cct_kelvin": 3000, "is_standard": false}
+  },
+  "virtual_print": {
+    "model": "spectral_absorbance_density_transfer",
+    "substrate_reflectance": 0.96,
+    "ink_density_gain": 1.06,
+    "blue_absorbance_bias": 0.018,
+    "blue_bias_center_nm": 455,
+    "blue_bias_sigma_nm": 45,
+    "reflectance_floor": 0.005,
+    "description": "Synthetic relative absorbance transfer; not printer or measured paper data."
+  },
+  "observer": {
+    "model": "monotone_delta_e_sensitivity_assumption",
+    "base_error_probability": 0.01,
+    "maximum_additional_error_probability": 0.39,
+    "delta_e_midpoint": 8.0,
+    "delta_e_scale": 3.0,
+    "trials_per_condition": 10000,
+    "confusion_weights": {"adjacent": 0.70, "nonadjacent": 0.15}
+  },
+  "donation": {
+    "mean_near_expiry_arrivals_per_day": 80,
+    "simulation_days": 30,
+    "replicates": 500,
+    "donation_capacities_per_day": [10, 25, 50],
+    "red_fraction": 0.5,
+    "discount_recovery_probability": 0.55,
+    "average_product_kg": 0.8,
+    "avoided_emissions_kgco2e_per_kg": 2.5
+  },
+  "sustainability": {
+    "emissions_factor_scenarios_kgco2e_per_kg": {"low_impact": 1.5, "central": 2.5, "high_impact": 3.5},
+    "factor_source_note": "Illustrative sensitivity assumptions around the configured central factor; not supplier-specific or measured life-cycle assessment data."
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "generated_utc": "2026-11-15T16:37:31.956600+00:00",
+  "config": {
+    "project": {
+      "title": "Software-Based Spectral Evaluation of Expiry-Warning Shelf Colours",
+      "version": "0.1.0",
+      "random_seed": 20261115,
+      "wavelength_nm": {
+        "start": 380,
+        "end": 780,
+        "step": 1
+      },
+      "observer": "CIE 1931 2 degree"
+    },
+    "colours": {
+      "G": {
+        "name": "Fresh",
+        "action": "fresh",
+        "hex": "#2E9E4F"
+      },
+      "Y": {
+        "name": "Watch",
+        "action": "watch",
+        "hex": "#F5B700"
+      },
+      "O": {
+        "name": "Discount now",
+        "action": "discount",
+        "hex": "#F07C1E"
+      },
+      "R": {
+        "name": "Donate now",
+        "action": "donate",
+        "hex": "#D62828"
+      }
+    },
+    "illuminations": {
+      "L1": {
+        "name": "D65 daylight",
+        "kind": "cie_d65",
+        "cct_kelvin": 6504,
+        "is_standard": true
+      },
+      "L2": {
+        "name": "Neutral store LED approximation",
+        "kind": "phosphor_led_approximation",
+        "cct_kelvin": 4000,
+        "is_standard": false
+      },
+      "L3": {
+        "name": "Warm store LED approximation",
+        "kind": "phosphor_led_approximation",
+        "cct_kelvin": 3000,
+        "is_standard": false
+      }
+    },
+    "virtual_print": {
+      "model": "spectral_absorbance_density_transfer",
+      "substrate_reflectance": 0.96,
+      "ink_density_gain": 1.06,
+      "blue_absorbance_bias": 0.018,
+      "blue_bias_center_nm": 455,
+      "blue_bias_sigma_nm": 45,
+      "reflectance_floor": 0.005,
+      "description": "Synthetic relative absorbance transfer; not printer or measured paper data."
+    },
+    "observer": {
+      "model": "monotone_delta_e_sensitivity_assumption",
+      "base_error_probability": 0.01,
+      "maximum_additional_error_probability": 0.39,
+      "delta_e_midpoint": 8.0,
+      "delta_e_scale": 3.0,
+      "trials_per_condition": 10000,
+      "confusion_weights": {
+        "adjacent": 0.7,
+        "nonadjacent": 0.15
+      }
+    },
+    "donation": {
+      "mean_near_expiry_arrivals_per_day": 80,
+      "simulation_days": 30,
+      "replicates": 500,
+      "donation_capacities_per_day": [
+        10,
+        25,
+        50
+      ],
+      "red_fraction": 0.5,
+      "discount_recovery_probability": 0.55,
+      "average_product_kg": 0.8,
+      "avoided_emissions_kgco2e_per_kg": 2.5
+    },
+    "sustainability": {
+      "emissions_factor_scenarios_kgco2e_per_kg": {
+        "low_impact": 1.5,
+        "central": 2.5,
+        "high_impact": 3.5
+      },
+      "factor_source_note": "Illustrative sensitivity assumptions around the configured central factor; not supplier-specific or measured life-cycle assessment data."
+    }
+  },
+  "data_md5": {
+    "CIE_std_illum_D65.csv": "03d4eb9b837c60671627c946fb534deb",
+    "CIE_xyz_1931_2deg.csv": "17cca777db64b17170f06f67ce9d3ab7"
+  },
+  "software": {
+    "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+    "platform": "Windows-10-10.0.26300-SP0",
+    "numpy": "2.4.6",
+    "pandas": "3.1.1",
+    "scipy": "1.15.3",
+    "statsmodels": "0.15.0",
+    "matplotlib": "3.11.2",
+    "colour-science": "0.4.7",
+    "fastapi": "0.163.1",
+    "streamlit": "1.67.0",
+    "uvicorn": "0.54.0",
+    "blender": {
+      "available": true,
+      "executable": "C:\\Program Files\\Blender Foundation\\Blender 5.2\\blender.exe",
+      "version": "Blender 5.2.3 LTS"
+    }
+  },
+  "evidence_note": "All print, observer, inventory and sustainability outputs are software simulations; no human or physical measurements.",
+  "donation_replicates_per_scenario": 500
+}

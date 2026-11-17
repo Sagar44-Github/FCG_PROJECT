@@ -1,0 +1,3 @@
+term,coefficient,std_error,model,p_value_interpretation
+intercept,-3.37804787,0.09151135,descriptive_logit_on_assumption_generated_trials,not empirical; no human data
+delta_e00,0.27941591,0.04297639,descriptive_logit_on_assumption_generated_trials,not empirical; no human data

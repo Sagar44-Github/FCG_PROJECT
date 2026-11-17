@@ -1,0 +1,4 @@
+comparison,left_illumination_id,right_illumination_id,n_paired_colours,mean_paired_delta_e00_difference,sd,ci95_low_descriptive,ci95_high_descriptive,interpretation
+L1-L2,L1,L2,4,0.01647272,0.19231690,-0.28954639,0.32249182,paired descriptive interval across four configured labels; not population inference
+L1-L3,L1,L3,4,0.07705148,0.26817536,-0.34967536,0.50377831,paired descriptive interval across four configured labels; not population inference
+L2-L3,L2,L3,4,0.06057876,0.08013100,-0.06692754,0.18808505,paired descriptive interval across four configured labels; not population inference

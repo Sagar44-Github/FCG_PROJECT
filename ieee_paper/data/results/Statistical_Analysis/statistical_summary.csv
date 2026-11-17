@@ -1,0 +1,55 @@
+analysis,illumination_id,mean,sd,ci95_low,ci95_high,n,interpretation,comparison,colour_id,recognition,capacity_per_day
+delta_e_mean_across_four_labels,L1,2.12066583,0.26686958,1.69601678,2.54531489,4,descriptive interval across four configured labels; not population inference,,,,
+delta_e_mean_across_four_labels,L2,2.10419312,0.32414368,1.58840819,2.61997805,4,descriptive interval across four configured labels; not population inference,,,,
+delta_e_mean_across_four_labels,L3,2.04361436,0.38132808,1.43683628,2.65039244,4,descriptive interval across four configured labels; not population inference,,,,
+paired_illumination_difference,,0.01647272,0.19231690,-0.28954639,0.32249182,4,paired descriptive interval across four configured labels; not population inference,L1-L2,,,
+paired_illumination_difference,,0.07705148,0.26817536,-0.34967536,0.50377831,4,paired descriptive interval across four configured labels; not population inference,L1-L3,,,
+paired_illumination_difference,,0.06057876,0.08013100,-0.06692754,0.18808505,4,paired descriptive interval across four configured labels; not population inference,L2-L3,,,
+assumption_generated_trigger_error_rate,L1,0.06420000,,0.05956131,0.06917338,10000,Wilson interval for Monte Carlo trials; synthetic observer model,,G,,
+assumption_generated_trigger_error_rate,L2,0.06460000,,0.05994726,0.06958713,10000,Wilson interval for Monte Carlo trials; synthetic observer model,,G,,
+assumption_generated_trigger_error_rate,L3,0.06640000,,0.06168468,0.07144832,10000,Wilson interval for Monte Carlo trials; synthetic observer model,,G,,
+assumption_generated_trigger_error_rate,L1,0.05490000,,0.05060400,0.05953783,10000,Wilson interval for Monte Carlo trials; synthetic observer model,,Y,,
+assumption_generated_trigger_error_rate,L2,0.05300000,,0.04877816,0.05756513,10000,Wilson interval for Monte Carlo trials; synthetic observer model,,Y,,
+assumption_generated_trigger_error_rate,L3,0.05100000,,0.04685792,0.05548691,10000,Wilson interval for Monte Carlo trials; synthetic observer model,,Y,,
+assumption_generated_trigger_error_rate,L1,0.05800000,,0.05358618,0.06275328,10000,Wilson interval for Monte Carlo trials; synthetic observer model,,O,,
+assumption_generated_trigger_error_rate,L2,0.05590000,,0.05156557,0.06057549,10000,Wilson interval for Monte Carlo trials; synthetic observer model,,O,,
+assumption_generated_trigger_error_rate,L3,0.05890000,,0.05445267,0.06368609,10000,Wilson interval for Monte Carlo trials; synthetic observer model,,O,,
+assumption_generated_trigger_error_rate,L1,0.05460000,,0.05031561,0.05922646,10000,Wilson interval for Monte Carlo trials; synthetic observer model,,R,,
+assumption_generated_trigger_error_rate,L2,0.05620000,,0.05185412,0.06088671,10000,Wilson interval for Monte Carlo trials; synthetic observer model,,R,,
+assumption_generated_trigger_error_rate,L3,0.05580000,,0.05146940,0.06047175,10000,Wilson interval for Monte Carlo trials; synthetic observer model,,R,,
+monte_carlo_units_saved,L1,1017.06600000,28.27983632,967.00000000,1073.00000000,500,Monte Carlo replicate percentile interval; model outcomes,,,perfect,10.00000000
+monte_carlo_waste_rate,L1,0.57635927,0.00909477,0.55844005,0.59388587,500,Monte Carlo replicate percentile interval; model outcomes,,,perfect,10.00000000
+monte_carlo_units_saved,L1,1218.22400000,25.91665816,1169.95000000,1270.05000000,500,Monte Carlo replicate percentile interval; model outcomes,,,perfect,25.00000000
+monte_carlo_waste_rate,L1,0.49232047,0.00843330,0.47569745,0.50969334,500,Monte Carlo replicate percentile interval; model outcomes,,,perfect,25.00000000
+monte_carlo_units_saved,L1,1417.64400000,37.45754128,1345.47500000,1485.52500000,500,Monte Carlo replicate percentile interval; model outcomes,,,perfect,50.00000000
+monte_carlo_waste_rate,L1,0.40923955,0.01023867,0.38916145,0.42904435,500,Monte Carlo replicate percentile interval; model outcomes,,,perfect,50.00000000
+monte_carlo_units_saved,L1,1002.14600000,27.28401582,947.47500000,1053.52500000,500,Monte Carlo replicate percentile interval; model outcomes,,,simulated_errors,10.00000000
+monte_carlo_waste_rate,L1,0.58029797,0.00912569,0.56220153,0.59635347,500,Monte Carlo replicate percentile interval; model outcomes,,,simulated_errors,10.00000000
+monte_carlo_units_saved,L1,1198.68000000,27.83327113,1143.47500000,1251.00000000,500,Monte Carlo replicate percentile interval; model outcomes,,,simulated_errors,25.00000000
+monte_carlo_waste_rate,L1,0.49600087,0.00864532,0.47691636,0.51146684,500,Monte Carlo replicate percentile interval; model outcomes,,,simulated_errors,25.00000000
+monte_carlo_units_saved,L1,1370.66400000,35.92771500,1299.00000000,1437.52500000,500,Monte Carlo replicate percentile interval; model outcomes,,,simulated_errors,50.00000000
+monte_carlo_waste_rate,L1,0.42147660,0.01022798,0.40199225,0.44204519,500,Monte Carlo replicate percentile interval; model outcomes,,,simulated_errors,50.00000000
+monte_carlo_units_saved,L2,1015.52200000,28.28103871,961.47500000,1070.00000000,500,Monte Carlo replicate percentile interval; model outcomes,,,perfect,10.00000000
+monte_carlo_waste_rate,L2,0.57675476,0.00907316,0.55844190,0.59352277,500,Monte Carlo replicate percentile interval; model outcomes,,,perfect,10.00000000
+monte_carlo_units_saved,L2,1216.53200000,26.40286345,1170.00000000,1268.52500000,500,Monte Carlo replicate percentile interval; model outcomes,,,perfect,25.00000000
+monte_carlo_waste_rate,L2,0.49255484,0.00835938,0.47620803,0.50907733,500,Monte Carlo replicate percentile interval; model outcomes,,,perfect,25.00000000
+monte_carlo_units_saved,L2,1417.80800000,34.74838178,1346.00000000,1488.00000000,500,Monte Carlo replicate percentile interval; model outcomes,,,perfect,50.00000000
+monte_carlo_waste_rate,L2,0.40921226,0.00978951,0.38910845,0.42782749,500,Monte Carlo replicate percentile interval; model outcomes,,,perfect,50.00000000
+monte_carlo_units_saved,L2,1003.71000000,28.64694040,954.47500000,1059.00000000,500,Monte Carlo replicate percentile interval; model outcomes,,,simulated_errors,10.00000000
+monte_carlo_waste_rate,L2,0.58020629,0.00915488,0.56215157,0.59889174,500,Monte Carlo replicate percentile interval; model outcomes,,,simulated_errors,10.00000000
+monte_carlo_units_saved,L2,1196.62200000,27.13144572,1145.00000000,1249.00000000,500,Monte Carlo replicate percentile interval; model outcomes,,,simulated_errors,25.00000000
+monte_carlo_waste_rate,L2,0.49608927,0.00841877,0.47760157,0.51098545,500,Monte Carlo replicate percentile interval; model outcomes,,,simulated_errors,25.00000000
+monte_carlo_units_saved,L2,1372.78800000,35.99675804,1301.95000000,1449.57500000,500,Monte Carlo replicate percentile interval; model outcomes,,,simulated_errors,50.00000000
+monte_carlo_waste_rate,L2,0.42160423,0.00994082,0.40335593,0.44145333,500,Monte Carlo replicate percentile interval; model outcomes,,,simulated_errors,50.00000000
+monte_carlo_units_saved,L3,1014.72000000,27.93618551,958.00000000,1071.00000000,500,Monte Carlo replicate percentile interval; model outcomes,,,perfect,10.00000000
+monte_carlo_waste_rate,L3,0.57744522,0.00910534,0.55830650,0.59481608,500,Monte Carlo replicate percentile interval; model outcomes,,,perfect,10.00000000
+monte_carlo_units_saved,L3,1217.35600000,26.17363908,1167.00000000,1264.00000000,500,Monte Carlo replicate percentile interval; model outcomes,,,perfect,25.00000000
+monte_carlo_waste_rate,L3,0.49276769,0.00837125,0.47631803,0.50896826,500,Monte Carlo replicate percentile interval; model outcomes,,,perfect,25.00000000
+monte_carlo_units_saved,L3,1417.09800000,38.15767829,1340.00000000,1487.05000000,500,Monte Carlo replicate percentile interval; model outcomes,,,perfect,50.00000000
+monte_carlo_waste_rate,L3,0.40927053,0.01073953,0.38932048,0.42960831,500,Monte Carlo replicate percentile interval; model outcomes,,,perfect,50.00000000
+monte_carlo_units_saved,L3,1002.17200000,29.10850436,945.00000000,1059.00000000,500,Monte Carlo replicate percentile interval; model outcomes,,,simulated_errors,10.00000000
+monte_carlo_waste_rate,L3,0.58028435,0.00909043,0.56168568,0.59739788,500,Monte Carlo replicate percentile interval; model outcomes,,,simulated_errors,10.00000000
+monte_carlo_units_saved,L3,1199.72800000,26.14745484,1152.47500000,1254.00000000,500,Monte Carlo replicate percentile interval; model outcomes,,,simulated_errors,25.00000000
+monte_carlo_waste_rate,L3,0.49536154,0.00859870,0.47728568,0.51230470,500,Monte Carlo replicate percentile interval; model outcomes,,,simulated_errors,25.00000000
+monte_carlo_units_saved,L3,1369.09600000,37.71678533,1298.00000000,1442.10000000,500,Monte Carlo replicate percentile interval; model outcomes,,,simulated_errors,50.00000000
+monte_carlo_waste_rate,L3,0.42182449,0.00996899,0.40282114,0.44044901,500,Monte Carlo replicate percentile interval; model outcomes,,,simulated_errors,50.00000000

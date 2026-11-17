@@ -1,0 +1,70 @@
+services:
+  q3-api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      Q3_DATABASE_PATH: /var/lib/q3/q3.sqlite3
+      BLENDER_EXECUTABLE: /usr/bin/blender
+      LOG_LEVEL: INFO
+    volumes:
+      - q3-data:/var/lib/q3
+      - q3-results:/app/results
+      - q3-renders:/app/renders
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=1g
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/api/v1/health',timeout=4)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+  q3-dashboard:
+    build: .
+    command: ["python", "-m", "streamlit", "run", "dashboard/app.py", "--server.address=0.0.0.0", "--server.port=8501", "--server.headless=true", "--browser.gatherUsageStats=false"]
+    ports:
+      - "8501:8501"
+    environment:
+      Q3_API_URL: http://q3-api:8000
+      HOME: /tmp
+    depends_on:
+      q3-api:
+        condition: service_healthy
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=256m
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    restart: unless-stopped
+
+  q3-frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:8080"
+    depends_on:
+      q3-api:
+        condition: service_healthy
+    read_only: true
+    tmpfs:
+      - /var/cache/nginx:rw,noexec,nosuid,size=32m
+      - /var/run:rw,noexec,nosuid,size=8m
+      - /tmp:rw,noexec,nosuid,size=16m
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    restart: unless-stopped
+
+volumes:
+  q3-data:
+  q3-results:
+  q3-renders:

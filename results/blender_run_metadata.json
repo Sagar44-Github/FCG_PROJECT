@@ -1,0 +1,81 @@
+{
+  "generated_utc": "2026-11-15T10:20:02.023117+00:00",
+  "blender_executable": "C:\\Program Files\\Blender Foundation\\Blender 5.2\\blender.exe",
+  "blender_version": "Blender 5.2.3 LTS",
+  "engine": "Cycles",
+  "view_transform": "Standard",
+  "samples": 8,
+  "render_resolution_px": [
+    960,
+    640
+  ],
+  "render_count": 12,
+  "rendered_files": [
+    {
+      "path": "renders\\G_L1.png",
+      "bytes": 593595,
+      "sha256": "7daa83488a2f14fe842475fd4a229ebb291f1b37139c39decd356edfe4cf57ed"
+    },
+    {
+      "path": "renders\\G_L2.png",
+      "bytes": 598718,
+      "sha256": "aaaceb15e216216e52281cd8096ae8f029e826ba48ad76cbd9610c884cde1cc9"
+    },
+    {
+      "path": "renders\\G_L3.png",
+      "bytes": 602857,
+      "sha256": "3be7901d3bcb03b9d84b692f6700f643e6a423e8d6efa68c369c3deea13a9a3f"
+    },
+    {
+      "path": "renders\\O_L1.png",
+      "bytes": 608913,
+      "sha256": "e9e75992e77eedb6387e42833c9254192971e58ae8d0e4529acaa7f27b6a67ac"
+    },
+    {
+      "path": "renders\\O_L2.png",
+      "bytes": 602899,
+      "sha256": "fece51e178bd29827bb1a6e4d344469dbc4e7c17c1ad97f0fdcbcd8e85c087dd"
+    },
+    {
+      "path": "renders\\O_L3.png",
+      "bytes": 603572,
+      "sha256": "471f1c96331f9c1a26a7a8eceec0f396cbac6db5b263e4e57429166657b38353"
+    },
+    {
+      "path": "renders\\R_L1.png",
+      "bytes": 612497,
+      "sha256": "b69f2b5d4e796dfb5e0d67f14d54359077d754ed77546ebe1620bab8d48ac50b"
+    },
+    {
+      "path": "renders\\R_L2.png",
+      "bytes": 604829,
+      "sha256": "6cc8bc525c2341d856ece0ed407711c0ec53d14ed3c2a680e6034293cf2a0f07"
+    },
+    {
+      "path": "renders\\R_L3.png",
+      "bytes": 599665,
+      "sha256": "15e730d859acda63ab7ff08f29debf9256701d178a68b81967be8e7c1e0f1408"
+    },
+    {
+      "path": "renders\\Y_L1.png",
+      "bytes": 592465,
+      "sha256": "59e0af1b87aeb59d276e5cc3352daa471640a082342316ce0e0165406b38b687"
+    },
+    {
+      "path": "renders\\Y_L2.png",
+      "bytes": 589453,
+      "sha256": "88efa6bab0f92a0da2f015d6273e6ac022cd32fa32dec4c658de0cb7a9e64a46"
+    },
+    {
+      "path": "renders\\Y_L3.png",
+      "bytes": 590141,
+      "sha256": "fb0c00ff6cb2118699671f1a78d1bb1e6bbd2bcd8c57b5ca84542b86e74cbcb1"
+    }
+  ],
+  "blend_file": {
+    "path": "blender\\q3_project.blend",
+    "bytes": 103199,
+    "sha256": "7b5cc762cbb850f664e0aa087f0a320d47f1b4d3ffb89d0a473d4c0274532b64"
+  },
+  "spectral_note": "Blender output is an RGB visualization; spectral colorimetry is calculated by the Python CIE dataset pipeline."
+}

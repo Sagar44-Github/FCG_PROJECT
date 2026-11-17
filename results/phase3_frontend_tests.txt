@@ -1,0 +1,13 @@
+
+> frontend@0.0.0 test
+> vitest run --environment jsdom src
+
+
+ RUN  v5.1.0 D:/Semester - 5/Fundamentals of Computer Graphics/FCG PROJECT/frontend
+
+
+ Test Files  1 passed (1)
+      Tests  3 passed (3)
+   Start at  21:03:47
+   Duration  4.52s (tests 51%, environment 35%, import 13%, transform 1%)
+

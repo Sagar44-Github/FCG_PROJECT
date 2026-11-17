@@ -1,0 +1,20 @@
+@startuml
+|Configuration|
+start
+:Load colors, illumination and simulation assumptions;
+|Spectral engine|
+:Load CIE D65 SPD and CIE 1931 2° CMFs;
+:Fit parameterized L2/L3 LED SPD;
+:Reconstruct smooth bounded target reflectance;
+:Apply virtual absorbance print transfer;
+:Integrate under each SPD to XYZ, Lab and xy;
+:Compute ΔE00, ΔL, ΔC, ΔH, wavelength and purity;
+|Simulation|
+:Map ΔE00 to assumed confusion probabilities;
+:Monte Carlo inventory under perfect/error recognition and capacity cases;
+:Calculate alternative modeled mass and emissions estimate;
+|Evidence|
+:Write CSV tables, metadata and figures;
+:Persist API-created records in SQLite;
+stop
+@enduml

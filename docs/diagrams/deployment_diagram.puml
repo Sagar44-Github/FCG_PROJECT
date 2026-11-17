@@ -1,0 +1,30 @@
+@startuml
+skinparam componentStyle rectangle
+node "Host OS / Docker Compose network\n(user-space processes)" {
+  node "Browser" as browser
+  node "q3-frontend container\nNginx · React SPA :3000" as frontend
+  node "q3-fallback container\nStreamlit :8501" as fallback
+  node "q3-api container\nUID 10001 · Uvicorn / FastAPI :8000" as api {
+    component "Blender background child\nCycles batch" as blender
+  }
+  database "q3-data volume\n/var/lib/q3/q3.sqlite3" as sqlite
+  folder "q3-results volume\n/app/results" as results
+  folder "q3-renders volume\n/app/renders" as renders
+  artifact "Application image\nPython modules · config · CIE datasets" as image
+}
+browser --> frontend : HTTP :3000
+browser --> fallback : HTTP :8501 (fallback)
+browser --> api : OpenAPI / Swagger :8000
+frontend --> api : /api proxy\nREST / JSON
+fallback --> api : Q3_API_URL\nREST / JSON
+api --> sqlite : persisted jobs and results
+api --> blender : fixed executable + argv
+api --> results : analysis output
+blender --> renders : PNG and .blend
+api --> image : reads config and local CIE data
+note bottom
+Compose is prepared with read-only container filesystems, dropped capabilities,
+health checks and persistent volumes. Container execution is not verified unless
+Docker is available on the host. No custom kernel-mode component is required.
+end note
+@enduml

@@ -1,0 +1,22 @@
+# Research and technical source provenance
+
+This index distinguishes data and standards used by the implementation from source documents that could not be redistributed or were not supplied. The project does not claim an open redistribution license for third-party CIE or article content where no explicit license record is present.
+
+| Source | Used in project | Local item | Provenance / license note |
+|---|---|---|---|
+| CIE standard illuminant D65, DOI 10.25039/CIE.DS.hjfjmt59 | L1 reference SPD | `data/CIE_std_illum_D65.csv` | CIE data table, 1 nm data, source ISO/CIE FDIS 11664-2:2022 Table B.1. CIE page displays copyright; no permissive redistribution license is recorded in this repository. MD5 `03d4eb9b837c60671627c946fb534deb`. [Official page](https://www.cie.co.at/datatable/cie-standard-illuminant-d65). |
+| CIE 1931 2° colour-matching functions, DOI 10.25039/CIE.DS.xvudnb9b | XYZ integration | `data/CIE_xyz_1931_2deg.csv` | CIE 2019 dataset, 1 nm data, source CIE 018:2019 Table 6. CIE page displays copyright; no permissive redistribution license is recorded here. MD5 `17cca777db64b17170f06f67ce9d3ab7`. [Official page](https://www.cie.co.at/datatable/cie-1931-colour-matching-functions-2-degree-observer). |
+| CIE 015:2018, Colorimetry, 4th ed. | Colorimetric conventions reference | Not included as PDF | Standards publication; not present in project workspace. [CIE publication record](https://www.cie.co.at/publications/colorimetry-4th-edition). |
+| ISO/CIE 11664-6:2014, CIEDE2000 | Formula context | Not included as PDF | Standards document; not present in project workspace. Copyright/availability governed by ISO/CIE. The implementation verification cases are included locally. |
+| IEC 61966-2-1, sRGB | sRGB transfer function and matrix convention | Not included as PDF | Standards document; not present in project workspace. Copyright/availability governed by IEC. |
+| Sharma, Wu & Dalal, “The CIEDE2000 Color-Difference Formula: Implementation Notes, Supplementary Test Data, and Mathematical Observations,” *Color Research & Application*, 30(1), 21–30, 2005, DOI 10.1002/col.20070 | CIEDE2000 implementation verification | `data/ciede2000_reference_cases.csv` | Author-hosted paper and related files URL: https://www.ece.rochester.edu/~gsharma/ciede2000/. Article copyright notice is Wiley; no redistribution license is recorded. Only the project verification values are included. |
+| Blender Manual | Blender API/render settings | No documentation snapshot | The automation targets locally verified Blender 5.2.3 LTS. [Official manual](https://docs.blender.org/manual/en/latest/). No manual pages copied. |
+| United Nations SDG 12, Target 12.3 | Conceptual mapping only | No source PDF | Official target concerns reducing retail/consumer food waste and supply-chain food loss; this project does not measure SDG indicators. [UN Goal 12](https://sdgs.un.org/goals/goal12). |
+| United Nations SDG 13 | Conceptual mapping only | No source PDF | Mapping is contextual only; model output is not a climate indicator. [UN Goal 13](https://sdgs.un.org/goals/goal13). |
+| Emission factors for sustainability sensitivity | No published factor used | Factors are configuration assumptions | 1.5/2.5/3.5 kg CO₂e/kg are explicitly illustrative assumptions. No source-specific or supplier-specific factor is claimed. |
+
+URLs were checked 2026-11-15. Citation details, checksums, or rights should be rechecked before publication or external redistribution.
+
+## Assigned retail-waste papers and supplied originals
+
+The exact paper identities and local-file checksums are listed in [`reference_materials/REFERENCE_SOURCE_REGISTER.md`](../reference_materials/REFERENCE_SOURCE_REGISTER.md), and paper-level method/results/limitation notes are in `report_inputs/LITERATURE_REVIEW_NOTES.md`. The source register deliberately distinguishes bundled PDFs from verified online full texts that could not be retrieved as local files. In brief: Jullien's final TMLR version and the Wadhawan arXiv CC BY 4.0 preprint are bundled; the Pilarski final text is online under CC BY 4.0 but its local retrieval timed out; the Li article is open access under a Creative Commons license but its local PDF endpoint returned HTTP 403; the supplied Nigam PDF has no visible venue/DOI/date/license metadata. The assignment, guide, and ToC images are user-supplied originals; no reuse license is stated in their files.

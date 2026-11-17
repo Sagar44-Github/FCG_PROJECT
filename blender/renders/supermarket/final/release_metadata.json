@@ -1,0 +1,100 @@
+{
+  "title": "VERDANT MARKET supermarket presentation and Blender-derived browser twin",
+  "generated_at_utc": "2026-11-15T15:42:04.150290+00:00",
+  "software": {
+    "blender": "5.2.3 LTS",
+    "python": "3.11.9",
+    "pillow": "13.0.0",
+    "platform": "Windows-10-10.0.26300-SP0"
+  },
+  "render": {
+    "engine": "Cycles",
+    "device": "CPU",
+    "view_transform": "AgX",
+    "look": "AgX - Medium High Contrast",
+    "denoiser": "OpenImageDenoise",
+    "resolution_px": [
+      2560,
+      1440
+    ],
+    "sample_counts": {
+      "hero": 12,
+      "shelf_detail": 14,
+      "donate_now_macro": 16,
+      "colour_status_system": 12,
+      "illuminant_comparison_components": 12,
+      "isometric": 12
+    }
+  },
+  "configuration_sha256": "b3e7376a730562170b2f6739ab22bbbf9622f031c33da19e46867528746c5e60",
+  "random_seed_from_config": 20261115,
+  "research_boundary": "RGB presentation assets only. CIE D65 and parameterized LED spectral computations remain in Python; no printer, lamp, participant, or retail measurement is represented.",
+  "product_families": [
+    "milk carton",
+    "juice carton",
+    "glass bottle",
+    "PET bottle",
+    "aluminium can",
+    "cereal box",
+    "snack pouch",
+    "glass jar",
+    "yogurt tub",
+    "refill pouch",
+    "pasta pack",
+    "produce crate"
+  ],
+  "outputs": [
+    {
+      "name": "blender/renders/supermarket/final/01_supermarket_hero.png",
+      "width_px": 2560,
+      "height_px": 1440,
+      "bytes": 4768382,
+      "sha256": "caa58e62901864b1f54f9e4389ce5308bd4195fec7854aa119aa7d1a8fdfeb3f"
+    },
+    {
+      "name": "blender/renders/supermarket/final/02_shelf_detail.png",
+      "width_px": 2560,
+      "height_px": 1440,
+      "bytes": 4651436,
+      "sha256": "5ec45979389c3ce9c54c2f960687e24c789df65ea0cbb599946a76af6e0d59bd"
+    },
+    {
+      "name": "blender/renders/supermarket/final/03_donate_now_macro.png",
+      "width_px": 2560,
+      "height_px": 1440,
+      "bytes": 3702303,
+      "sha256": "7d7fe81f24c7160c8821d557c0fef902a3590cf211a411ef1523eb9ceb4ea27f"
+    },
+    {
+      "name": "blender/renders/supermarket/final/04_colour_status_system.png",
+      "width_px": 2560,
+      "height_px": 1440,
+      "bytes": 4178062,
+      "sha256": "a37236f364925345c369e53aca55917c2d8248bcdf7328c8c37ac1f5de99ebeb"
+    },
+    {
+      "name": "blender/renders/supermarket/final/05_illuminant_comparison.png",
+      "width_px": 2560,
+      "height_px": 1440,
+      "bytes": 3633238,
+      "sha256": "89de7049412301eeb4f35b8edeee43450bdc0472a7a81b156e611834dd923dc0"
+    },
+    {
+      "name": "blender/renders/supermarket/final/06_supermarket_isometric.png",
+      "width_px": 2560,
+      "height_px": 1440,
+      "bytes": 4859783,
+      "sha256": "0b68f163f895a6ae82ab3a7e2ff785b6240135b90024e89f22d10782a9bd36c4"
+    },
+    {
+      "name": "frontend/public/assets/supermarket/verdant_market.glb",
+      "bytes": 4062132,
+      "sha256": "6901462035282f96e320f1d936fea7fc3c672db9942970d593df8dee477d66b6"
+    },
+    {
+      "name": "blender/q3_supermarket.blend",
+      "bytes": 2737940,
+      "sha256": "9dd9f8469f855ca6b970f2fd9485215fe6d119a86d940cca12bd47501c91a712"
+    }
+  ]
+}

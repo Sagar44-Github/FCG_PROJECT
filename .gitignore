@@ -1,0 +1,34 @@
+__pycache__/
+.pytest_cache/
+*.py[cod]
+.venv/
+.env
+*.db
+*.sqlite3
+blender/*.blend1
+frontend/node_modules/
+frontend/dist/
+frontend/coverage/
+frontend/test-results/
+
+# Generated API job workspaces (the canonical renders live in renders/).
+renders/api_*/
+
+# Local paper build tools and transient LaTeX output.
+ieee_paper/.build_tools/
+ieee_paper/main.aux
+ieee_paper/main.bbl
+ieee_paper/main.blg
+ieee_paper/main.log
+ieee_paper/main.out
+ieee_paper/qa/
+ieee_paper/qa_final/
+ieee_paper/qa_final2/
+ieee_paper/qa_final3/
+ieee_paper/qa_final4/
+ieee_paper/qa_final5/
+ieee_paper/qa_final6/
+
+# Archives duplicate the source tree and are distributed separately when needed.
+*.zip
+Q3_COMPLETE_IEEE_RESEARCH_HANDOFF/

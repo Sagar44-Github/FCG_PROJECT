@@ -1,0 +1,4 @@
+illumination_id,n_labels,mean_delta_e00,sd_delta_e00,ci95_low_descriptive,ci95_high_descriptive,interpretation
+L1,4,2.12066583,0.26686958,1.69601678,2.54531489,descriptive interval across four configured labels; not population inference
+L2,4,2.10419312,0.32414368,1.58840819,2.61997805,descriptive interval across four configured labels; not population inference
+L3,4,2.04361436,0.38132808,1.43683628,2.65039244,descriptive interval across four configured labels; not population inference

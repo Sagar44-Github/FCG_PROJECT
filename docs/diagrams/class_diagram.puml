@@ -1,0 +1,89 @@
+@startuml
+skinparam classAttributeIconSize 0
+skinparam packageStyle rectangle
+class DonationSimulationRequest <<Pydantic>> {
+  +illumination_id: str
+  +recognition: Literal
+  +capacity_per_day: int
+  +days: int
+  +replicates: int
+  +seed: int
+  +observer_parameters: ObserverParameters?
+}
+class ObserverParameters <<Pydantic>> {
+  +base_error_probability: float
+  +maximum_additional_error_probability: float
+  +delta_e_midpoint: float
+  +delta_e_scale: float
+  +confusion_weights: ConfusionWeights
+}
+class ConfusionWeights <<Pydantic>> {
+  +adjacent: float
+  +nonadjacent: float
+}
+class AnalysisJobResponse <<Pydantic>> {
+  +id: UUID
+  +status: JobStatus
+  +request: dict
+  +result: dict?
+  +error: str?
+}
+class AnalysisJobRequest <<Pydantic>> {
+  +donation_replicates: int
+}
+class ColourComparisonRequest <<Pydantic>> {
+  +colour_id: str
+  +illumination_id: str
+}
+class RenderJobRequest <<Pydantic>> {
+  +render_all: bool
+  +samples: int
+}
+class FastAPIApp <<module>> {
+  +create_analysis_job()
+  +create_render_job()
+  +create_colour_comparison()
+  +create_donation_simulation()
+  +download_artifact()
+}
+class ColourPipeline <<module>> {
+  +run_pipeline(replicates)
+  +compare_colour(colour_id, illumination_id)
+}
+class ObserverModel <<module>> {
+  +error_probability(delta_e, parameters)
+  +confusion_matrix_for(delta_e, parameters)
+}
+class DonationModel <<module>> {
+  +simulate_inventory(capacity, delta_e, mode, seed, observer)
+}
+class SQLiteRepository <<module>> {
+  +insert_analysis_job()
+  +update_job_status()
+  +get_job()
+  +list_jobs(limit, offset, filters)
+}
+class ReactDashboard <<module>> {
+  +typed API client
+  +render six sections and R3F scene
+  +request backend operations and exports
+}
+class StreamlitFallback <<module>> {
+  +call FastAPI
+  +render legacy pages
+}
+class BlenderBatch <<script>> {
+  +render twelve configured cases
+}
+DonationSimulationRequest *-- ObserverParameters
+ObserverParameters *-- ConfusionWeights
+FastAPIApp ..> ColourPipeline
+FastAPIApp ..> DonationModel
+FastAPIApp ..> ObserverModel
+FastAPIApp ..> SQLiteRepository
+FastAPIApp ..> BlenderBatch : fixed subprocess
+ReactDashboard ..> FastAPIApp : REST / JSON
+StreamlitFallback ..> FastAPIApp : REST / JSON
+ColourPipeline ..> ObserverModel
+ColourPipeline ..> DonationModel
+@enduml

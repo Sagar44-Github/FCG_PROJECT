@@ -1,0 +1,68 @@
+{
+  "milk_carton": [
+    "blender/assets/generated_textures/milk_carton_01.png",
+    "blender/assets/generated_textures/milk_carton_02.png",
+    "blender/assets/generated_textures/milk_carton_03.png"
+  ],
+  "juice_carton": [
+    "blender/assets/generated_textures/juice_carton_01.png",
+    "blender/assets/generated_textures/juice_carton_02.png",
+    "blender/assets/generated_textures/juice_carton_03.png"
+  ],
+  "glass_bottle": [
+    "blender/assets/generated_textures/glass_bottle_01.png",
+    "blender/assets/generated_textures/glass_bottle_02.png",
+    "blender/assets/generated_textures/glass_bottle_03.png"
+  ],
+  "pet_bottle": [
+    "blender/assets/generated_textures/pet_bottle_01.png",
+    "blender/assets/generated_textures/pet_bottle_02.png",
+    "blender/assets/generated_textures/pet_bottle_03.png"
+  ],
+  "aluminium_can": [
+    "blender/assets/generated_textures/aluminium_can_01.png",
+    "blender/assets/generated_textures/aluminium_can_02.png",
+    "blender/assets/generated_textures/aluminium_can_03.png"
+  ],
+  "cereal_box": [
+    "blender/assets/generated_textures/cereal_box_01.png",
+    "blender/assets/generated_textures/cereal_box_02.png",
+    "blender/assets/generated_textures/cereal_box_03.png"
+  ],
+  "snack_pouch": [
+    "blender/assets/generated_textures/snack_pouch_01.png",
+    "blender/assets/generated_textures/snack_pouch_02.png",
+    "blender/assets/generated_textures/snack_pouch_03.png"
+  ],
+  "glass_jar": [
+    "blender/assets/generated_textures/glass_jar_01.png",
+    "blender/assets/generated_textures/glass_jar_02.png",
+    "blender/assets/generated_textures/glass_jar_03.png"
+  ],
+  "yogurt_tub": [
+    "blender/assets/generated_textures/yogurt_tub_01.png",
+    "blender/assets/generated_textures/yogurt_tub_02.png",
+    "blender/assets/generated_textures/yogurt_tub_03.png"
+  ],
+  "refill_pouch": [
+    "blender/assets/generated_textures/refill_pouch_01.png",
+    "blender/assets/generated_textures/refill_pouch_02.png",
+    "blender/assets/generated_textures/refill_pouch_03.png"
+  ],
+  "pasta_pack": [
+    "blender/assets/generated_textures/pasta_pack_01.png",
+    "blender/assets/generated_textures/pasta_pack_02.png",
+    "blender/assets/generated_textures/pasta_pack_03.png"
+  ],
+  "produce_crate": [
+    "blender/assets/generated_textures/produce_crate_01.png",
+    "blender/assets/generated_textures/produce_crate_02.png",
+    "blender/assets/generated_textures/produce_crate_03.png"
+  ],
+  "shelf_label": [
+    "blender/assets/generated_textures/shelf_label_G.png",
+    "blender/assets/generated_textures/shelf_label_Y.png",
+    "blender/assets/generated_textures/shelf_label_O.png",
+    "blender/assets/generated_textures/shelf_label_R.png"
+  ]
+}

@@ -1,0 +1,13 @@
+
+> frontend@0.0.0 test:e2e
+> playwright test --grep-invert submits and completes an actual
+
+
+Running 2 tests using 1 worker
+
+(node:4056) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 e2e\research-app.spec.ts:7:1 › all six sections use the live research API and export real evidence (10.6s)
+  ok 2 e2e\research-app.spec.ts:75:1 › uses a Blender PNG when WebGL is unavailable (2.0s)
+
+  2 passed (13.5s)
