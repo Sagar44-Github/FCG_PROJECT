@@ -19,6 +19,8 @@ export default function DigitalTwinPage({ config, dashboard, refresh, onNavigate
 
   const matchingRenders = dashboard.render_catalog.filter((render) => render.colour_id === selectedColor && render.illumination_id === selectedIllumination)
   const selectedRender = matchingRenders.find((render) => render.render_id !== 'baseline') ?? matchingRenders[0]
+  const lightingComparisons = illuminationIds.map((illuminationId) => dashboard.render_catalog.find((render) => render.colour_id === selectedColor && render.illumination_id === illuminationId && render.render_id === selectedRender?.render_id)
+    ?? dashboard.render_catalog.find((render) => render.colour_id === selectedColor && render.illumination_id === illuminationId && render.render_id === 'baseline'))
   const availableBatch = useMemo(() => {
     const items = dashboard.render_catalog.filter((render) => render.colour_id && render.render_id === selectedRender?.render_id)
     return items.length ? items : dashboard.render_catalog.filter((render) => render.colour_id && render.render_id === 'baseline')
@@ -68,6 +70,17 @@ export default function DigitalTwinPage({ config, dashboard, refresh, onNavigate
       <div>
         <div className="digital-twin-viewer"><Suspense fallback={<div className="loading-state"><LoaderCircle className="spin" size={18} />Loading 3D shelf scene…</div>}><SpectralScene config={config} selectedColor={selectedColor} selectedIllumination={selectedIllumination} onSelect={onSelectColor} fallbackUrl={selectedRender ? api.fileUrl(selectedRender.url) : undefined} /></Suspense></div>
         <div className="scene-detail"><div><div className="scene-detail__name">{config.colours[selectedColor].name} · {config.illuminations[selectedIllumination].name}</div><div className="scene-detail__note">Clickable labels · orbit and zoom enabled · selected light is highlighted</div></div><span className="scene-detail__value">{selectedColor} / {selectedIllumination}</span></div>
+        <Panel className="lighting-comparison">
+          <PanelHeading title="See the light change" note={`${config.colours[selectedColor].name} · three actual Blender RGB condition renders`} action={<Badge tone="warning">VISUAL PREVIEW</Badge>} />
+          <div className="lighting-comparison__grid">{lightingComparisons.map((render, index) => {
+            const illuminationId = illuminationIds[index]
+            return render ? <button type="button" key={illuminationId} className={`lighting-comparison__item ${selectedIllumination === illuminationId ? 'is-active' : ''}`} onClick={() => onSelectIllumination(illuminationId)} aria-pressed={selectedIllumination === illuminationId}>
+              <img src={api.fileUrl(render.url)} alt={`${config.colours[selectedColor].name} label render under ${config.illuminations[illuminationId].name}`} loading="lazy" />
+              <span><strong>{illuminationId} · {illuminationId === 'L1' ? 'D65' : `${config.illuminations[illuminationId].cct_kelvin} K`}</strong><small>{illuminationId === 'L1' ? 'Neutral daylight view' : illuminationId === 'L2' ? 'Warmer neutral view' : 'Warm amber view'}</small></span>
+            </button> : null
+          })}</div>
+          <div className="research-warning">These Cycles images show RGB appearance proxies. CIE spectral values are calculated separately by the Python model; the LED scenes are not measured lamp spectra.</div>
+        </Panel>
         <SceneRender id="02_shelf_detail" className="digital-twin-photo" title="Cycles source scene · shelf merchandising detail" note="Presentation render from HERO_SUPERMARKET · visual RGB output" />
         <div className="grid grid--2" style={{ marginTop: 12 }}>
           <Panel>

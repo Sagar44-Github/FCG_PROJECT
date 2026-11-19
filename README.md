@@ -96,6 +96,8 @@ python -m streamlit run dashboard/app.py
 
 The fallback remains at `http://127.0.0.1:8501`. Swagger UI is at `http://127.0.0.1:8000/docs`; the OpenAPI document is at `/openapi.json`.
 
+For a short step-by-step faculty presentation, including how to change lighting in both Blender and the dashboard, see [`docs/faculty_demo_guide.md`](docs/faculty_demo_guide.md).
+
 The React 3D shelf is a lazily loaded GLB exported from the `HERO_SUPERMARKET` scene. It is a visual control surface; API calculations and all scientific result values remain backend-owned. Final store render images are provided as reproducible static PNGs and downloadable API artifacts.
 
 Both dashboards read status and saved outputs through `GET /api/v1/dashboard`. The React pages start real API computations, retrieve render PNGs and CSVs, page through saved history, and download the evidence archive. The frontend never computes science metrics locally. If the backend is stopped, it shows a connection error rather than sample data.
@@ -202,3 +204,16 @@ Frontend architecture, route-to-API mapping, WebGL fallback, accessibility and r
 - Configuration history is recorded in `docs/config_history.md`; spectral provenance is recorded in `docs/spectral_sources.md`.
 
 The supplied execution guide, assignment/rubric, ToC images, and Nigam paper are now preserved in `reference_materials/`; `report_inputs/` contains the Claude research brief, source notes, faculty mapping, results/limitations, and scope reconciliation. The single organized handoff package records the remaining two local paper-PDF gaps and their verified full-text links.
+
+## Important: which Blender file to open
+
+For the supermarket demonstration, open **`blender/q3_supermarket.blend`**. It contains the fully modelled retail scene and the separate controlled research measurement scene. The file **`blender/q3_project.blend`** is the compact 12-condition measurement source; it is intentionally a plain shelf test fixture, not the cinematic supermarket.
+
+The supermarket file opens in the hero-camera view. To switch its visible store lighting:
+
+1. Open Blender's **Scripting** workspace.
+2. In the Text Editor, open the embedded **Q3 Lighting Lab.py** text and press **Run Script** once.
+3. Return to the 3D View, press **N**, and select **Q3 Research**.
+4. Click **L1 D65**, **L2 4000 K**, or **L3 3000 K**. The scene lights and world update; press **F12** to render the current camera under that condition.
+
+These Blender/Three.js lighting controls are intentionally visible RGB presentation presets, not spectral lamp emulation or measured store-light data. The dashboard shows the actual twelve Blender condition renders beside the interactive model; the Python colour-science analysis is the numerical source of truth.

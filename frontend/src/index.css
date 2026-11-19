@@ -278,6 +278,16 @@ td .mono { color: #d5e3ef; }
 .condition-button strong { display: block; color: inherit; font: 10px var(--mono); }
 .condition-button small { display: block; margin-top: 5px; color: #718198; font-size: 8px; }
 .render-image { display: block; width: 100%; max-height: 340px; object-fit: contain; border: 1px solid var(--line); border-radius: 8px; background: #080d16; }
+.lighting-comparison { margin-top: 12px; }
+.lighting-comparison__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 9px; }
+.lighting-comparison__item { min-width: 0; padding: 5px; text-align: left; color: var(--text); border: 1px solid var(--line); border-radius: 8px; background: rgba(255,255,255,.018); cursor: pointer; transition: border-color .16s ease, background .16s ease, transform .16s ease; }
+.lighting-comparison__item:hover { border-color: rgba(126,208,230,.48); transform: translateY(-1px); }
+.lighting-comparison__item:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.lighting-comparison__item.is-active { border-color: var(--accent); background: rgba(126,208,230,.08); box-shadow: inset 0 0 0 1px rgba(126,208,230,.12); }
+.lighting-comparison__item img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 5px; background: #10151c; }
+.lighting-comparison__item span { display: grid; gap: 3px; padding: 7px 3px 3px; }
+.lighting-comparison__item strong { font: 11px var(--mono); }
+.lighting-comparison__item small { color: var(--muted); font-size: 10px; line-height: 1.35; }
 
 /* Editorial supermarket imagery: restrained framing keeps the scene legible
    while the data panels retain the primary hierarchy. */
@@ -490,6 +500,7 @@ td .mono { color: #d5e3ef; }
   .hero-actions .button { flex: initial; width: 100%; }
   .grid--4 { grid-template-columns: 1fr 1fr; }
   .condition-strip { grid-template-columns: 1fr; }
+  .lighting-comparison__grid { grid-template-columns: 1fr; }
   .scene-instruction { gap: 5px; font-size: 8px; }
   .scene-instruction i { width: 10px; }
   .digital-twin-viewer { height: 300px; }

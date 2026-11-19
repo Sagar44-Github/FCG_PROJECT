@@ -7,7 +7,14 @@ import * as THREE from 'three'
 import type { ColourId, IlluminationId, ProjectConfiguration } from '../lib/types'
 
 const MODEL_URL = '/assets/supermarket/verdant_market.glb'
-const lampTints: Record<IlluminationId, string> = { L1: '#fff4df', L2: '#ffdcba', L3: '#ffc99f' }
+// Distinct RGB teaching presets make the live light switch easy to see.
+// They are not measured or spectrally accurate lamp renderings; colour science
+// remains in the Python pipeline.
+const lighting = {
+  L1: { key: '#fff5df', fill: '#dce7f7', ambient: '#edf0f2', environment: '#0b1112', keyPower: 3.7, fillPower: 1.0, spotPower: 34 },
+  L2: { key: '#ffd28c', fill: '#d8b991', ambient: '#e4cda9', environment: '#17120d', keyPower: 3.6, fillPower: 0.72, spotPower: 32 },
+  L3: { key: '#ff9b4a', fill: '#cb7545', ambient: '#d9a071', environment: '#1b1009', keyPower: 3.5, fillPower: 0.48, spotPower: 30 },
+} satisfies Record<IlluminationId, { key: string; fill: string; ambient: string; environment: string; keyPower: number; fillPower: number; spotPower: number }>
 const idPattern = /Q3_LABEL_([GYOR])_PANEL/
 
 function labelFromObject(target: THREE.Object3D): ColourId | undefined {
@@ -45,8 +52,9 @@ function RetailShelf({ selectedColor, onSelect }: { selectedColor: ColourId; onS
       materials.forEach((material) => {
         if (!('emissive' in material)) return
         const standard = material as THREE.MeshStandardMaterial
-        standard.emissive.set(isSelected ? '#b6c1a1' : '#000000')
-        standard.emissiveIntensity = isSelected ? 0.075 : 0
+        const swatch = { G: '#3cc76c', Y: '#ffd23f', O: '#ff8b36', R: '#ff443b' }[selectedColor]
+        standard.emissive.set(isSelected ? swatch : '#000000')
+        standard.emissiveIntensity = isSelected ? 0.18 : 0
         standard.needsUpdate = true
       })
     })
@@ -66,13 +74,6 @@ function RetailShelf({ selectedColor, onSelect }: { selectedColor: ColourId; onS
   function handleOut() { document.body.style.cursor = '' }
 
   return <>
-    <color attach="background" args={['#0b1112']} />
-    <fog attach="fog" args={['#0b1112', 15, 34]} />
-    <ambientLight intensity={1.0} color="#f1eadb" />
-    <hemisphereLight args={['#f7f1e6', '#3f493b', 1.25]} />
-    <directionalLight position={[-6, 11, 9]} intensity={2.4} color={lampTints.L1} />
-    <directionalLight position={[8, 6, -5]} intensity={1.1} color="#dcebdd" />
-    <spotLight position={[0, 8, 5]} intensity={105} angle={0.68} penumbra={0.72} color={lampTints.L1} castShadow={false} />
     <primitive object={model} onPointerDown={handlePointer} onPointerOver={handleHover} onPointerOut={handleOut} />
     <ContactShadows position={[0, 0.005, 0]} opacity={0.27} scale={14} blur={2.4} far={6} resolution={256} />
     <OrbitControls makeDefault target={[0, 2.0, 0]} enablePan={false} enableDamping dampingFactor={0.08} minDistance={6.0} maxDistance={21} minPolarAngle={0.38} maxPolarAngle={1.47} autoRotate={false} />
@@ -81,9 +82,18 @@ function RetailShelf({ selectedColor, onSelect }: { selectedColor: ColourId; onS
 
 /* Kept as a separate, low-cost light rig so condition changes stay in sync with
  * the scene controls without mutating any of the exported material data. */
-function RetailIlluminant({ selectedIllumination }: { selectedIllumination?: IlluminationId }) {
-  if (!selectedIllumination) return null
-  return <pointLight position={[0, 5.5, 2.5]} intensity={selectedIllumination === 'L1' ? 5.5 : 8.0} distance={15} color={lampTints[selectedIllumination]} />
+function RetailIlluminant({ selectedIllumination }: { selectedIllumination: IlluminationId }) {
+  const preset = lighting[selectedIllumination]
+  return <>
+    <color attach="background" args={[preset.environment]} />
+    <fog attach="fog" args={[preset.environment, 15, 34]} />
+    <ambientLight intensity={selectedIllumination === 'L3' ? 0.35 : 0.55} color={preset.ambient} />
+    <hemisphereLight args={[preset.key, selectedIllumination === 'L1' ? '#3f493b' : '#4b2e1b', 0.85]} />
+    <directionalLight position={[-6, 11, 9]} intensity={preset.keyPower} color={preset.key} />
+    <directionalLight position={[8, 6, -5]} intensity={preset.fillPower} color={preset.fill} />
+    <spotLight position={[0, 8, 5]} intensity={preset.spotPower} angle={0.68} penumbra={0.72} color={preset.key} castShadow={false} />
+    <pointLight position={[0, 5.5, 2.5]} intensity={selectedIllumination === 'L1' ? 2.5 : 4.0} distance={15} color={preset.key} />
+  </>
 }
 
 class SceneBoundary extends Component<{ children: ReactNode; fallback: ReactNode }, { failed: boolean }> {
@@ -108,7 +118,7 @@ export function SpectralScene({ config, selectedColor, selectedIllumination, onS
   return <SceneBoundary fallback={imageFallback}>
     <div className="scene-canvas-wrap">
       <Suspense fallback={<div className="scene-fallback__placeholder">Loading the Blender shelf model…</div>}>
-        <Canvas dpr={[1, 1.35]} frameloop="demand" camera={{ position: [9.4, 6.2, 12.4], fov: 40, near: .1, far: 100 }} shadows={false} gl={{ antialias: true, powerPreference: 'high-performance', alpha: false, toneMapping: THREE.ACESFilmicToneMapping }}>
+        <Canvas dpr={[1, 1.35]} frameloop="demand" camera={{ position: [7.0, 5.4, 8.0], fov: 38, near: .1, far: 100 }} shadows={false} gl={{ antialias: true, powerPreference: 'high-performance', alpha: false, toneMapping: THREE.ACESFilmicToneMapping }}>
           <RetailShelf selectedColor={selectedColor} onSelect={onSelect} />
           <RetailIlluminant selectedIllumination={selectedIllumination} />
         </Canvas>

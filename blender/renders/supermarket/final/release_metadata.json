@@ -1,6 +1,6 @@
 {
   "title": "VERDANT MARKET supermarket presentation and Blender-derived browser twin",
-  "generated_at_utc": "2026-11-15T15:42:04.150290+00:00",
+  "generated_at_utc": "2026-11-19T14:24:06.760286+00:00",
   "software": {
     "blender": "5.2.3 LTS",
     "python": "3.11.9",
@@ -76,8 +76,8 @@
       "name": "blender/renders/supermarket/final/05_illuminant_comparison.png",
       "width_px": 2560,
       "height_px": 1440,
-      "bytes": 3633238,
-      "sha256": "89de7049412301eeb4f35b8edeee43450bdc0472a7a81b156e611834dd923dc0"
+      "bytes": 3553977,
+      "sha256": "1fe984e7875feafa9f098e909bf27fe77bc8f826177a975959bd4b5603c16aa2"
     },
     {
       "name": "blender/renders/supermarket/final/06_supermarket_isometric.png",
@@ -93,8 +93,8 @@
     },
     {
       "name": "blender/q3_supermarket.blend",
-      "bytes": 2737940,
-      "sha256": "9dd9f8469f855ca6b970f2fd9485215fe6d119a86d940cca12bd47501c91a712"
+      "bytes": 2726632,
+      "sha256": "3b0a774127ea916656c9a5e9af8b2ffc92ded1042d5f5a672fbec00fb4184d9c"
     }
   ]
 }

@@ -4,9 +4,9 @@ from mathutils import Vector
 from hero_utils import hex_linear, box
 
 ILLUMINANTS={
-    "L1":{"name":"D65 daylight","hex":"#FFF8ED","visual":"neutral D65-chromaticity appearance; numerical spectral computation uses the CIE reference SPD"},
-    "L2":{"name":"Neutral LED · 4000 K approximation","hex":"#FFE3BE","visual":"warm-neutral 4000 K blackbody appearance; not a measured store-lamp SPD"},
-    "L3":{"name":"Warm LED · 3000 K approximation","hex":"#FFD1A1","visual":"warm 3000 K blackbody appearance; not a measured store-lamp SPD"},
+    "L1":{"name":"D65 daylight","hex":"#E6F0FF","world":"#8FAFD8","visual":"cool-neutral RGB presentation preset; CIE D65 spectrum is calculated in Python"},
+    "L2":{"name":"Neutral LED · 4000 K approximation","hex":"#FFC978","world":"#D69D5E","visual":"warm-neutral RGB presentation preset; not a measured store-lamp SPD"},
+    "L3":{"name":"Warm LED · 3000 K approximation","hex":"#F07832","world":"#B64E22","visual":"amber RGB presentation preset; deliberately visible in the demo and not a measured store-lamp SPD"},
 }
 
 
@@ -38,6 +38,15 @@ def set_condition(b, illuminant_id):
     b.scene["visual_illuminant_id"]=illuminant_id
     b.scene["visual_illuminant_name"]=spec["name"]
     b.scene["illumination_visualization_boundary"]=spec["visual"]
+    # Keep the selected mode visible in viewport previews and renders. The
+    # stronger RGB separation is a teaching aid, not a claim of measured SPD.
+    world=b.scene.world
+    if world and world.use_nodes:
+        background=world.node_tree.nodes.get("Background")
+        if background:
+            background.inputs["Color"].default_value=hex_linear(spec["world"])
+            background.inputs["Strength"].default_value={"L1":.19,"L2":.17,"L3":.14}[illuminant_id]
+    b.scene["visual_preset_note"]="RGB presentation preset for demonstration. Use results/*.csv and the Python CIE pipeline for scientific colour values; this is not a calibrated spectral render."
 
 
 def build(b, initial="L1"):

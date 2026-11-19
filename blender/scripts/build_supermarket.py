@@ -35,6 +35,7 @@ def main():
     setup_lighting.build(b,"L1")
     setup_cameras.build(b)
     scene.camera=b.cameras["01_supermarket_hero"]
+    scene["demo_instructions"]="Default startup is the hero camera. Open the embedded Q3 Lighting Lab script from the Scripting workspace, Run Script, then press N in a 3D View and choose the Q3 Research tab to switch the live lighting preset."
 
     scene.render.engine="CYCLES"
     scene.cycles.device="CPU"
@@ -57,6 +58,22 @@ def main():
     scene["blender_scene_role"]="presentation digital twin; separate from the authoritative controlled measurement scene"
     (ROOT/"blender"/"renders"/"supermarket"/"previews").mkdir(parents=True,exist_ok=True)
     (ROOT/"blender"/"renders"/"supermarket"/"final").mkdir(parents=True,exist_ok=True)
+    # Save a useful, presentation-ready opening view. The previous file kept
+    # the construction viewport from mesh generation, which opened as a plan-
+    # like solid view instead of the finished camera composition.
+    for screen in bpy.data.screens:
+        for area in screen.areas:
+            if area.type != "VIEW_3D":
+                continue
+            space=area.spaces.active
+            space.region_3d.view_perspective="CAMERA"
+            space.shading.type="MATERIAL"
+            space.shading.use_scene_lights=True
+            space.shading.use_scene_world=True
+    lighting_script=ROOT/"blender"/"scripts"/"lighting_lab.py"
+    if lighting_script.exists():
+        text=bpy.data.texts.get("Q3 Lighting Lab.py") or bpy.data.texts.new("Q3 Lighting Lab.py")
+        text.clear(); text.write(lighting_script.read_text(encoding="utf-8"))
     out=ROOT/"blender"/"q3_supermarket.blend"
     bpy.ops.wm.save_as_mainfile(filepath=str(out),compress=True)
     print(f"VERDANT MARKET scene saved: {out}")
